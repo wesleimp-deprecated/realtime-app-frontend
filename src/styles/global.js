@@ -10,9 +10,11 @@ export default createGlobalStyle `
 		outline: 0;
 	}
 	body {
-		font-family: Arial, Helvetica, sans-serif;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+			"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+			sans-serif;
 		font-size: 14px;
-		background: #fff;
+		background: #282828;
 		text-rendering: optimizeLegibility;
 		-webkit-font-smoothing: antialiased;
 	}

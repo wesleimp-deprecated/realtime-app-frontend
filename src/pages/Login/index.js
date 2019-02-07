@@ -14,9 +14,10 @@ class Login extends Component {
 
   handleOnSubmit = (e) => {
     e.preventDefault();
+    const {username} = this.state;
+    if (!username) return;
+    this.props.history.push('/timeline');
 
-    console.log(this.state.username);
-    this.setState({ username: '' });
   }
 
   render() {
