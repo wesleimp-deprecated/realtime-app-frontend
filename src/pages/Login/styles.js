@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Form = styled.form`
 	margin: 20px 0 0;
   width: 100%;
-  max-width: 280px;
+  max-width: 300px;
 
   display: flex;
   flex-direction: column;
