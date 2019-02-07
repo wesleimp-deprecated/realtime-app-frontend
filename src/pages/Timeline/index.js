@@ -12,7 +12,9 @@ class Timeline extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		alert(this.state.newPost);
+		const {newPost} = this.state;
+		if (!newPost) return;
+		
 	}
 
 	render() {

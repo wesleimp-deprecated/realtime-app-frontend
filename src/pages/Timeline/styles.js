@@ -22,7 +22,6 @@ export const Form = styled.form`
 	margin: 30px 0;
 
 	textarea {
-		/* border: 2px solid rgba(255,255,255,.2); */
 		border: 2px solid ${colors.border};
 		background-color: ${colors.backgound};
 		border-radius: 5px;
