@@ -43,5 +43,6 @@ export const Form = styled.form`
 		background-color: ${colors.backgound};
 		color: ${colors.color};
 		font-size: 15px;
+		cursor: pointer;
 	}
 `;

@@ -19,7 +19,11 @@ class Timeline extends Component {
 		return ( 
 			<Container>
 				<Form onSubmit={this.handleSubmit}>
-					<textarea placeholder="What's going on?" maxLength={300} value={this.state.newPost} onChange={this.handleOnInputChange} />
+					<textarea placeholder="What's going on?" 
+						maxLength={300} 
+						value={this.state.newPost} 
+						onChange={this.handleOnInputChange}
+					/>
 					<button type="submit">Share</button>
 				</Form>
 			</Container>
