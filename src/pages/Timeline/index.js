@@ -3,28 +3,50 @@ import { Container, Form, PostList } from './styles';
 import api from '../../services/api';
 import Post from './Post';
 import Header from '../../components/Header';
+import socket from 'socket.io-client';
+
 class Timeline extends Component {
 	state = {
-		username: '',
 		newPost: '',
 		posts: []
 	}
 
 	async componentDidMount(){
-		this.setState({ username: localStorage.getItem('@realtimeapp:username') });
+		this.subscribeToEvents();
 		const response = await api.get('/post');
 		this.setState({ posts: response.data });
 	}
-
+	
 	handleOnInputChange = (event) => {
 		this.setState({ newPost: event.target.value });
 	}
+	
+	subscribeToEvents = () => {
+		const io = socket("http://localhost:3001");
+
+		io.on('newPost', (data) => {
+			this.setState({ posts: [data, ...this.state.posts] });
+		});
+
+		io.on('likePost', (data) => {
+			this.setState({ 
+				posts: this.state.posts.map(post => post._id === data._id ? data : post) 
+			})
+		});
+
+	}
+
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		const {newPost} = this.state;
+
+		const { newPost } = this.state;
 		if (!newPost) return;
+		const username = localStorage.getItem('@realtimeapp:username');
+
+		api.post('/post', { author: username, content: newPost });
 		
+		this.setState({ newPost: '' });
 	}
 
 	render() {
