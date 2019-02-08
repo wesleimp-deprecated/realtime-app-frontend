@@ -16,15 +16,18 @@ class Login extends Component {
     e.preventDefault();
     const {username} = this.state;
     if (!username) return;
+    localStorage.setItem("@realtimeapp:username", username);
     this.props.history.push('/timeline');
-
   }
 
   render() {
     return (
       <Container>
         <Form onSubmit={this.handleOnSubmit}>
-          <input placeholder="username" onChange={this.handleOnInputChange} value={this.state.username} />
+          <input placeholder="username" 
+            onChange={this.handleOnInputChange} 
+            value={this.state.username} 
+          />
           <button type="submit">Entrar</button>
         </Form>
       </Container>

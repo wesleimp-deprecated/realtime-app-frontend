@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 600px;
-  margin: 50px auto;
+  margin: 30px auto;
   display: flex;
   flex-direction: column;
 	align-items: stretch;
@@ -44,4 +44,9 @@ export const Form = styled.form`
 		font-size: 15px;
 		cursor: pointer;
 	}
+`;
+
+export const PostList = styled.ul`
+	list-style: none;
+  	color: ${colors.color};
 `;
