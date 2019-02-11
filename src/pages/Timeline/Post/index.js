@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Creators as PostTypes } from '../../../store/ducks/post';
 import { Container } from './styles';
 import like from '../../../images/like.svg'
 import api from '../../../services/api';
@@ -25,4 +28,14 @@ class Post extends Component {
   }
 }
 
-export default Post;
+const mapStateToProps = (state) => ({
+	posts: state.items
+});
+
+const mapDispatchToProps = (dispatch) => 
+	bindActionCreators(PostTypes, dispatch)
+
+export default connect(
+	mapStateToProps, 
+	mapDispatchToProps
+)(Post);
