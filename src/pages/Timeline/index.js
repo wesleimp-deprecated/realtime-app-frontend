@@ -52,7 +52,6 @@ class Timeline extends Component {
 
 	render() {
 		const { posts } = this.props;
-		console.log(posts);
 		return (
 			<div>
 				<Header />
@@ -66,14 +65,12 @@ class Timeline extends Component {
 						/>
 						<button type="submit">Share</button>
 					</Form>
-					{
-						
-					}
-					{/* <PostList>
+					
+					<PostList>
 						{posts.map(post => (
 							<Post key={post._id} post={post} />
 						))}
-					</PostList> */}
+					</PostList>
 				</Container>
 			</div>
 		);
@@ -81,9 +78,8 @@ class Timeline extends Component {
 }
 
 const mapStateToProps = state => ({
-	posts: state.items,
-	error: state.error
-});
+	posts: state.post.items
+})
 
 const mapDispatchToProps = dispatch =>
 	bindActionCreators(PostActions, dispatch);

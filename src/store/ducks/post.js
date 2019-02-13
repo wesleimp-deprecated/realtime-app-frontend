@@ -13,7 +13,7 @@ const INITIAL_STATE = {
 };
 
 export default function(state = INITIAL_STATE, action) {
-	console.log(action);
+	console.log(action.payload);
 	switch (action.type) {
 		case Types.GET_POST_SUCCESS:
 			return {
@@ -40,7 +40,7 @@ export const Creators = {
 	}),
 	getPostSuccess: posts => ({
 		type: Types.GET_POST_SUCCESS,
-		payload: { posts }
+		payload: posts
 	}),
 	getPostError: message => ({
 		type: Types.GET_POST_ERROR,
