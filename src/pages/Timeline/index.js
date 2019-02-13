@@ -11,6 +11,7 @@ import socket from "socket.io-client";
 class Timeline extends Component {
 	state = {
 		newPost: "",
+		posts: []
 	};
 
 	componentDidMount() {
@@ -26,7 +27,8 @@ class Timeline extends Component {
 		const io = socket("http://localhost:3001");
 
 		io.on("newPost", data => {
-			this.setState({ posts: [data, ...this.state.posts] });
+			this.props.addPost(data);
+			//this.setState({ posts: [data, ...this.state.posts] });
 		});
 
 		io.on("likePost", data => {
@@ -51,7 +53,7 @@ class Timeline extends Component {
 	};
 
 	render() {
-		const { posts } = this.props;
+		const { post } = this.props;
 		return (
 			<div>
 				<Header />
@@ -67,7 +69,7 @@ class Timeline extends Component {
 					</Form>
 					
 					<PostList>
-						{posts.map(post => (
+						{post.map(post => (
 							<Post key={post._id} post={post} />
 						))}
 					</PostList>
@@ -78,7 +80,7 @@ class Timeline extends Component {
 }
 
 const mapStateToProps = state => ({
-	posts: state.post.items
+	post: state.post.items
 })
 
 const mapDispatchToProps = dispatch =>

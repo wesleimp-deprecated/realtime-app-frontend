@@ -48,6 +48,6 @@ export const Creators = {
 	}),
 	addPost: post => ({
 		type: Types.ADD_POST,
-		payload: post
+		payload: {post}
 	}),
 };
