@@ -4,13 +4,14 @@ import { bindActionCreators } from 'redux'
 import { Creators as PostTypes } from '../../../store/ducks/post';
 import { Container } from './styles';
 import like from '../../../images/like.svg'
-import api from '../../../services/api';
+//import api from '../../../services/api';
 
 class Post extends Component {
 
 	handleLike = () => {
 		const { _id } = this.props.post;
-		api.post(`/post/${_id}/like`);
+		this.props.likePostRequest(_id)
+		//api.post(`/post/${_id}/like`);
 	}
 
   render() {

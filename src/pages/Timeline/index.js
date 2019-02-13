@@ -28,15 +28,15 @@ class Timeline extends Component {
 
 		io.on("newPost", data => {
 			this.props.addPost(data);
-			//this.setState({ posts: [data, ...this.state.posts] });
 		});
 
 		io.on("likePost", data => {
-			this.setState({
-				posts: this.state.posts.map(post =>
-					post._id === data._id ? data : post
-				)
-			});
+			this.props.likePostSuccess(data);
+			// this.setState({
+			// 	posts: this.state.posts.map(post =>
+			// 		post._id === data._id ? data : post
+			// 	)
+			// });
 		});
 	};
 
